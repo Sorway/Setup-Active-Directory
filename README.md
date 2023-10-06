@@ -10,7 +10,7 @@ Ce script PowerShell facilite la configuration et la gestion de l'Active Directo
 * [**Sorway**](https://github.com/Sorway)
 
 ## Inspiré de:
-* [**IT-Connect**]([https://github.com/Sorway](https://www.it-connect.fr/))
+* [**IT-Connect**](https://www.it-connect.fr/)
 
 ## Fonctionnalités
 

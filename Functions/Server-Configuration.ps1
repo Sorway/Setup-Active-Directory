@@ -66,9 +66,9 @@ while (-not (Test-ValidSubnetMask -SubnetMask $DNSServer)) {
 
 Write-Host "Configuration de l'adresse IP, de la passerelle, du masque CIDR et du nom d'hôte..."
 
-#New-NetIPAddress -InterfaceIndex (NetAdapter).IfIndex -IPAddress $IPAddress -PrefixLength $MaskCIDR -DefaultGateway $DefaultGateway
-#Set-DnsClientServerAddress -InterfaceIndex (NetAdapter).IfIndex -ServerAddresses $DNSServer
-#Rename-Computer -NewName $Hostname
+New-NetIPAddress -InterfaceIndex (NetAdapter).IfIndex -IPAddress $IPAddress -PrefixLength $MaskCIDR -DefaultGateway $DefaultGateway
+Set-DnsClientServerAddress -InterfaceIndex (NetAdapter).IfIndex -ServerAddresses $DNSServer
+Rename-Computer -NewName $Hostname
 
 Write-Host "L'adresse IP a été réglée avec succès sur: $($IPAddress), Masque: $($MaskCIDR), Passerelle par défaut: $($DefaultGateway) et le serveur DNS: $($DNSServer)" -ForegroundColor Green
 

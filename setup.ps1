@@ -9,7 +9,7 @@ function ShowMenu {
   / ___ \ (__| |_| |\ V /  __/ | |_| | | | |  __/ (__| || (_) | |  | |_| |
  /_/   \_\___|\__|_| \_/ \___| |____/|_|_|  \___|\___|\__\___/|_|   \__, |
                                                                     |___/"
-    Write-Host "Auteur: Jonathan P. (Sorway)"
+    Write-Host "Auteur: Sorway"
     Write-Host "-----------------------------------"
     Write-Host "Menu de gestion de l'Active Directory"
     Write-Host "[0]: Configuration par défaut du serveur"

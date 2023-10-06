@@ -1,11 +1,68 @@
 # Configuration de l'adresse IP, de la passerelle, du masque CIDR et du nom d'hôte
 Clear-Host
 
+# Fonction pour valider l'adresse IP
+function Test-ValidIPAddress {
+    param(
+        [string]$IPAddress
+    )
+    
+    $ipPattern = "^(\d{1,3}\.){3}\d{1,3}$"
+    
+    if ($IPAddress -match $ipPattern) {
+        return $true
+    }
+    else {
+        return $false
+    }
+}
+
+# Fonction pour valider le masque CIDR
+function Test-ValidSubnetMask {
+    param(
+        [string]$SubnetMask
+    )
+    
+    $subnetMaskPattern = "^\d{1,2}$"
+    
+    if ($SubnetMask -match $subnetMaskPattern -and $SubnetMask -ge 0 -and $SubnetMask -le 32) {
+        return $true
+    }
+    else {
+        return $false
+    }
+}
+
+#Saisie d'un nom d'hôte
 $Hostname = Read-Host "Nom d'hôte (Actuel: $env:computername)"
+
+# Saisie de l'adresse IP et validation
 $IPAddress = Read-Host "Adresse IPv4"
-$MaskCIDR = Read-Host "Masque (Notation CIDR)"
+while (-not (Test-ValidIPAddress -IPAddress $IPAddress)) {
+    Write-Host "Adresse IP invalide. Veuillez entrer une adresse IP valide."
+    $IPAddress = Read-Host "Adresse IPv4"
+}
+
+# Saisie du masque CIDR et validation
+$MaskCIDR = Read-Host "Masque CIDR (par exemple, 24 pour 255.255.255.0)"
+while (-not (Test-ValidSubnetMask -SubnetMask $MaskCIDR)) {
+    Write-Host "Masque CIDR invalide. Veuillez entrer un masque CIDR valide (de 0 à 32)."
+    $MaskCIDR = Read-Host "Masque CIDR (par exemple, 24 pour 255.255.255.0)"
+}
+
+# Saisie de la passerelle par défaut et validation
 $DefaultGateway = Read-Host "Passerelle par défaut"
+while (-not (Test-ValidSubnetMask -SubnetMask $DefaultGateway)) {
+    Write-Host "Adresse IP invalide. Veuillez entrer une adresse IP valide."
+    $DefaultGateway = Read-Host "Passerelle par défaut (par exemple, 24 pour 255.255.255.0)"
+}
+
+# Saisie du DNS et validation
 $DNSServer = Read-Host "Serveur DNS"
+while (-not (Test-ValidSubnetMask -SubnetMask $DNSServer)) {
+    Write-Host "Adresse IP invalide. Veuillez entrer une adresse IP valide."
+    $DNSServer = Read-Host "Serveur DNS (par exemple, 24 pour 255.255.255.0)"
+}
 
 Write-Host "Configuration de l'adresse IP, de la passerelle, du masque CIDR et du nom d'hôte..."
 

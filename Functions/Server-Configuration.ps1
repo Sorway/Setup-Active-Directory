@@ -39,36 +39,36 @@ $Hostname = Read-Host "Nom d'hôte (Actuel: $env:computername)"
 # Saisie de l'adresse IP et validation
 $IPAddress = Read-Host "Adresse IPv4"
 while (-not (Test-ValidIPAddress -IPAddress $IPAddress)) {
-    Write-Host "Adresse IP invalide. Veuillez entrer une adresse IP valide."
+    Write-Host "Adresse IP invalide. Veuillez entrer une adresse IP valide." -ForegroundColor Red
     $IPAddress = Read-Host "Adresse IPv4"
 }
 
 # Saisie du masque CIDR et validation
 $MaskCIDR = Read-Host "Masque CIDR (par exemple, 24 pour 255.255.255.0)"
 while (-not (Test-ValidSubnetMask -SubnetMask $MaskCIDR)) {
-    Write-Host "Masque CIDR invalide. Veuillez entrer un masque CIDR valide (de 0 à 32)."
-    $MaskCIDR = Read-Host "Masque CIDR (par exemple, 24 pour 255.255.255.0)"
+    Write-Host "Masque CIDR invalide. Veuillez entrer un masque CIDR valide (de 0 à 32)." -ForegroundColor Red
+    $MaskCIDR = Read-Host "Adresse IPv4"
 }
 
 # Saisie de la passerelle par défaut et validation
 $DefaultGateway = Read-Host "Passerelle par défaut"
 while (-not (Test-ValidSubnetMask -SubnetMask $DefaultGateway)) {
     Write-Host "Adresse IP invalide. Veuillez entrer une adresse IP valide."
-    $DefaultGateway = Read-Host "Passerelle par défaut (par exemple, 24 pour 255.255.255.0)"
+    $DefaultGateway = Read-Host "Passerelle par défaut" -ForegroundColor Red
 }
 
 # Saisie du DNS et validation
 $DNSServer = Read-Host "Serveur DNS"
 while (-not (Test-ValidSubnetMask -SubnetMask $DNSServer)) {
-    Write-Host "Adresse IP invalide. Veuillez entrer une adresse IP valide."
-    $DNSServer = Read-Host "Serveur DNS (par exemple, 24 pour 255.255.255.0)"
+    Write-Host "Adresse IP invalide. Veuillez entrer une adresse IP valide." -ForegroundColor Red
+    $DNSServer = Read-Host "Serveur DNS"
 }
 
 Write-Host "Configuration de l'adresse IP, de la passerelle, du masque CIDR et du nom d'hôte..."
 
-New-NetIPAddress -InterfaceIndex (NetAdapter).IfIndex -IPAddress $IPAddress -PrefixLength $MaskCIDR -DefaultGateway $DefaultGateway
-Set-DnsClientServerAddress -InterfaceIndex (NetAdapter).IfIndex -ServerAddresses $DNSServer
-Rename-Computer -NewName $Hostname
+#New-NetIPAddress -InterfaceIndex (NetAdapter).IfIndex -IPAddress $IPAddress -PrefixLength $MaskCIDR -DefaultGateway $DefaultGateway
+#Set-DnsClientServerAddress -InterfaceIndex (NetAdapter).IfIndex -ServerAddresses $DNSServer
+#Rename-Computer -NewName $Hostname
 
 Write-Host "L'adresse IP a été réglée avec succès sur: $($IPAddress), Masque: $($MaskCIDR), Passerelle par défaut: $($DefaultGateway) et le serveur DNS: $($DNSServer)" -ForegroundColor Green
 

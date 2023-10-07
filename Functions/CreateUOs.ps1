@@ -37,15 +37,15 @@ foreach ($entry in $csvFile) {
     # Vérification si le nom de l'UO est non vide
     if ($ouName -ne "") {
         # Chemin complet de l'UO
-        $ouPath = "OU=$ouName,DC=$domainDC"
+        $ouPath = "OU=$ouName,$domainDC"
         
         # Vérification si l'OU existe déjà
-        $ouExists = Get-ADOrganizationalUnit -Filter {Name -eq $ouName} -SearchBase "DC=$domainDC" -ErrorAction SilentlyContinue
+        $ouExists = Get-ADOrganizationalUnit -Filter {Name -eq $ouName} -SearchBase $domainDC -ErrorAction SilentlyContinue
         
         if (!$ouExists) {
             # Création de l'UO avec gestion des erreurs
             try {
-                New-ADOrganizationalUnit -Name $ouName -Path "DC=$domainDC" -ErrorAction Stop
+                New-ADOrganizationalUnit -Name $ouName -Path $domainDC -ErrorAction Stop
                 Write-Host "OU créée : $ouPath"
             } catch {
                 Write-Host "Erreur lors de la création de l'OU $ouName : $_" -ForegroundColor Red

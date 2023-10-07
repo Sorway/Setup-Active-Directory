@@ -3,7 +3,7 @@ Clear-Host
 
 if (Get-WindowsFeature -Name AD-Domain-Services -ErrorAction SilentlyContinue) {
     Write-Host "L'Active Directory est déjà installé."  -ForegroundColor Red
-    $alreadyInstalledChoice = Read-Host "Appuyez sur une touche pour continuer."
+    Read-Host "Appuyez sur une touche pour continuer."
     exit
 }
 
@@ -36,6 +36,6 @@ if ($choice -eq "O") {
     Restart-Computer -Force
 } else {
     # Demande à l'utilisateur s'il souhaite revenir au menu principal
-    $returnChoice = Read-Host "Appuyez sur une touche pour revenir au menu principal ? (O/N)"
+    Read-Host "Appuyez sur une touche pour revenir au menu principal ? (O/N)"
     exit
 }

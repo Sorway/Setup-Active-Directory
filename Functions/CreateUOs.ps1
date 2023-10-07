@@ -10,8 +10,7 @@ while ([string]::IsNullOrEmpty($domainName)) {
 }
 
 # Conversion du nom du domaine en format "nom.extension"
-$domainComponents = $domainName.Split('.')
-$domainDC = $domainComponents -join ',DC='
+$domainDC = "DC=" + ($domainName.Split('.') -join ',DC=')
 
 # Demande à l'utilisateur de saisir le chemin vers le fichier CSV
 $csvFilePath = Read-Host "Entrez le chemin complet du fichier CSV"
@@ -56,3 +55,7 @@ foreach ($entry in $csvFile) {
         }
     }
 }
+
+# Demande à l'utilisateur s'il souhaite revenir au menu principal
+Read-Host "Appuyez sur une touche pour revenir au menu principal ? (O/N)"
+exit

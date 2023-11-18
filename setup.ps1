@@ -14,11 +14,9 @@ function ShowMenu {
     Write-Host "Menu de gestion de l'Active Directory"
     Write-Host "[0]: Configuration par défaut du serveur"
     Write-Host "[1]: Installer l'Active Directory"
-    Write-Host "[2]: Créer les UO en fonction d'un fichier CSV"
-    Write-Host "[3]: Créer les groupes en fonction d'un fichier CSV"
-    Write-Host "[4]: Créer les utilisateurs en fonction d'un fichier CSV"
-    Write-Host "[5]: Création des profils itinérants"
-    Write-Host "[6]: Mappage du lecteur réseau personnel"
+    Write-Host "[2]: Créer les UO, groupes et importation des utilisateurs en fonction d'un fichier CSV"
+    Write-Host "[3]: Création des profils itinérants"
+    Write-Host "[4]: Mappage du lecteur réseau personnel"
     Write-Host "[Q]: Quitter"
 }
 
@@ -33,10 +31,8 @@ while ($continue) {
         "0" { .\Functions\Server-Configuration.ps1 }
         "1" { .\Functions\InstallAD.ps1 }
         "2" { .\Functions\CreateUOs.ps1 }
-        "3" { .\Functions\CreateGroups.ps1 }
-        "4" { .\Functions\CreateUsers.ps1 }
-        "5" { .\Functions\ }
-        "6" {  }
+        "3" { .\Functions\CreateProfiles.ps1 }
+        "4" { .\Functions\MapNetworkDrive.ps1 }
         "Q" { $continue = $false }
         default { Write-Host "Option invalide." }
     }

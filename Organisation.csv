@@ -1,8 +1,0 @@
-ID;Prenom;Nom;Fonction;OU;Groupe;MemberOf
-1;;;;Informatique;;
-2;;;;Direction;;
-3;;;;Informatique;info;
-4;;;;Informatique;developpeurs;info
-5;;;;Informatique;tech_réseau;info
-6;Paul;Personne;TechnicienSI;Informatique;tech_réseau;
-7;Helene;Quelquun;DSI; Direction;;;

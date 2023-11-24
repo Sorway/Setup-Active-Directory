@@ -30,7 +30,7 @@ while ($continue) {
     switch ($choice) {
         "0" { .\Functions\Server-Configuration.ps1 }
         "1" { .\Functions\InstallAD.ps1 }
-        "2" { .\Functions\CreateUOs.ps1 }
+        "2" { .\Functions\ImportCSV.ps1 }
         "3" { .\Functions\CreateProfiles.ps1 }
         "4" { .\Functions\MapNetworkDrive.ps1 }
         "Q" { $continue = $false }

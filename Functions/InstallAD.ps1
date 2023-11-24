@@ -2,9 +2,11 @@
 Clear-Host
 
 if (Get-WindowsFeature -Name AD-Domain-Services -ErrorAction SilentlyContinue) {
-    Write-Host "L'Active Directory est déjà installé."  -ForegroundColor Red
-    Read-Host "Appuyez sur une touche pour continuer."
-    exit
+    if ((Get-WindowsFeature -Name AD-Domain-Services).Installed) { 
+        Write-Host "L'Active Directory est déjà installé." -ForegroundColor Red
+        Read-Host "Appuyez sur une touche pour continuer."
+        exit
+    }
 }
 
 $DomainName = Read-Host "Nom de domaine (exemple: google.com)"

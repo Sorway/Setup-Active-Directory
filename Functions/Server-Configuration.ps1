@@ -52,14 +52,14 @@ while (-not (Test-ValidSubnetMask -SubnetMask $MaskCIDR)) {
 
 # Saisie de la passerelle par défaut et validation
 $DefaultGateway = Read-Host "Passerelle par défaut"
-while (-not (Test-ValidSubnetMask -SubnetMask $DefaultGateway)) {
+while (-not (Test-ValidIPAddress -IPAddress $DefaultGateway)) {
     Write-Host "Adresse IP invalide. Veuillez entrer une adresse IP valide."
     $DefaultGateway = Read-Host "Passerelle par défaut" -ForegroundColor Red
 }
 
 # Saisie du DNS et validation
 $DNSServer = Read-Host "Serveur DNS"
-while (-not (Test-ValidSubnetMask -SubnetMask $DNSServer)) {
+while (-not (Test-ValidIPAddress -IPAddress $DNSServer)) {
     Write-Host "Adresse IP invalide. Veuillez entrer une adresse IP valide." -ForegroundColor Red
     $DNSServer = Read-Host "Serveur DNS"
 }

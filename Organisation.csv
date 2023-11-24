@@ -1,0 +1,12 @@
+Prenom;Nom;Fonction;OU;Groupe;MemberOf;Password
+Jean;DUPONT;Technicien;Informatique;technicien_réseau;informatique;NouveauMotDePasse123!;
+Marie;MARTIN;Technicien;Informatique;technicien_réseau;informatique;NouveauMotDePasse123!;
+Paul;DURAND;Technicien;Informatique;technicien_réseau;informatique;NouveauMotDePasse123!;
+Isabelle;ROUSSEAU;Technicien;Informatique;technicien_réseau;informatique;NouveauMotDePasse123!;
+Alexandre;LECLERC;Directeur;Direction;direction;;NouveauMotDePasse123!;
+Sophie;LAVOIE;DSI;Direction;direction;;NouveauMotDePasse123!;
+Philippe;BERNIER;Ressources Humaines;Ressources Humaines;Ressources Humaines;;NouveauMotDePasse123!;
+Caroline;DUBOIS;Comptable;Comptabilité;Comptables;;NouveauMotDePasse123!;
+Nicolas;GAGNE;Secrétaire Administratif;Secrétariat;Secrétaires Administratif;secrétariat;NouveauMotDePasse123!;
+Émilie;LEMIEUX;Commercial;Commerciaux;Commerciaux;;NouveauMotDePasse123!;
+Gabriel;ROBERT;Visiteur;Visiteurs;Visiteurs;;NouveauMotDePasse123!;

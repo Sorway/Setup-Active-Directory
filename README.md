@@ -23,7 +23,8 @@ Le script propose les fonctionnalités suivantes :
 5. **Créer des utilisateurs** : Créez des utilisateurs en fonction d'un fichier CSV pour ajouter rapidement des comptes d'utilisateurs.
 6. **Création des profils itinérants** : Cette option vous aide à configurer des profils itinérants pour les utilisateurs.
 7. **Mappage du lecteur réseau personnel** : Configurez le mappage automatique du lecteur réseau personnel des utilisateurs.
-8. **Quitter** : Quittez le script.
+8. **Forcer le changement du mot de passe** : Active l'option ChangePasswordAtLogon pour tous les utilisateurs, les obligeant à changer leur mot de passe lors de la prochaine connexion.
+9. **Quitter** : Quittez le script.
 
 ## Utilisation
 

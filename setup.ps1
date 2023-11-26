@@ -12,11 +12,12 @@ function ShowMenu {
     Write-Host "Auteur: Sorway"
     Write-Host "-----------------------------------"
     Write-Host "Menu de gestion de l'Active Directory"
-    Write-Host "[0]: Configuration par défaut du serveur"
+    Write-Host "[0]: Configuration par defaut du serveur"
     Write-Host "[1]: Installer l'Active Directory"
-    Write-Host "[2]: Créer les UO, groupes et importation des utilisateurs en fonction d'un fichier CSV"
-    Write-Host "[3]: Création des profils itinérants"
-    Write-Host "[4]: Mappage du lecteur réseau personnel"
+    Write-Host "[2]: Creer les UO, groupes et importation des utilisateurs en fonction d'un fichier CSV"
+    Write-Host "[3]: Creation des profils itinerants"
+    Write-Host "[4]: Mappage du lecteur reseau personnel"
+    Write-Host "[5]: Forcer le changement du mot de passe"
     Write-Host "[Q]: Quitter"
 }
 
@@ -25,14 +26,15 @@ $continue = $true
 while ($continue) {
     Clear-Host
     ShowMenu
-    $choice = Read-Host "Sélectionnez une option"
+    $choice = Read-Host "Selectionnez une option"
     
     switch ($choice) {
         "0" { .\Functions\Server-Configuration.ps1 }
         "1" { .\Functions\InstallAD.ps1 }
         "2" { .\Functions\ImportCSV.ps1 }
-        "3" { .\Functions\CreateProfiles.ps1 }
+        "3" { .\Functions\CreateItinerantProfiles.ps1 }
         "4" { .\Functions\MapNetworkDrive.ps1 }
+        "5" { .\Functions\ForcePasswordChange.ps1 }
         "Q" { $continue = $false }
         default { Write-Host "Option invalide." }
     }

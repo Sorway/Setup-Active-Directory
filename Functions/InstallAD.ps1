@@ -3,7 +3,7 @@ Clear-Host
 
 if (Get-WindowsFeature -Name AD-Domain-Services -ErrorAction SilentlyContinue) {
     if ((Get-WindowsFeature -Name AD-Domain-Services).Installed) { 
-        Write-Host "L'Active Directory est déjà installé." -ForegroundColor Red
+        Write-Host "L'Active Directory est deja installe." -ForegroundColor Red
         Read-Host "Appuyez sur une touche pour continuer."
         exit
     }
@@ -33,11 +33,11 @@ Install-ADDSForest @ForestConfiguration
 Write-Host "Installation terminée."
 
 # Demande à l'utilisateur s'il souhaite redémarrer le serveur
-$choice = Read-Host "La configuration nécessite un redémarrage du serveur. Souhaitez-vous redémarrer maintenant ? (O/N)"
+$choice = Read-Host "La configuration necessite un redemarrage du serveur. Souhaitez-vous redemarrer maintenant ? (O/N)"
 if ($choice -eq "O") {
     Restart-Computer -Force
 } else {
     # Demande à l'utilisateur s'il souhaite revenir au menu principal
-    Read-Host "Appuyez sur une touche pour revenir au menu principal ? (O/N)"
+    Read-Host "Appuyez sur une touche pour revenir au menu principal."
     exit
 }

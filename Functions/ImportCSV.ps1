@@ -40,9 +40,9 @@ foreach ($entry in $csvFile) {
         if (-not (Get-ADOrganizationalUnit -Filter {Name -eq $ouName} -SearchBase $domainDC -ErrorAction SilentlyContinue)) {
             try {
                 New-ADOrganizationalUnit -Name $ouName -Path $domainDC -ErrorAction Stop
-                Write-Host "OU créée : $ouPath" -ForegroundColor Green
+                Write-Host "OU creee : $ouPath" -ForegroundColor Green
             } catch {
-                Write-Host "Erreur lors de la création de l'OU $ouName : $_" -ForegroundColor Red
+                Write-Host "Erreur lors de la creation de l'OU $ouName : $_" -ForegroundColor Red
             }
         }
     
@@ -63,9 +63,9 @@ foreach ($entry in $csvFile) {
                     Get-ADGroup -Filter 'Name -eq $groupName' | Add-ADPrincipalGroupMembership -MemberOf $memberOf
                 }
     
-                Write-Host "Groupe $groupName créé dans $ouPath" -ForegroundColor Green
+                Write-Host "Groupe $groupName cree dans $ouPath" -ForegroundColor Green
             } catch {
-                Write-Host "Erreur lors de la création du groupe $groupName : $_" -ForegroundColor Red
+                Write-Host "Erreur lors de la creation du groupe $groupName : $_" -ForegroundColor Red
             }
         }
     }
@@ -81,8 +81,8 @@ foreach ($entry in $csvFile) {
             Surname             = $entry.Nom
             Title               = $entry.Fonction
             SamAccountName      = $userSamAccountName
-            UserPrincipalName   = "$($userSamAccountName)@gsb1.heo"
-            EmailAddress        = "$($userSamAccountName)@gsb1.heo"
+            UserPrincipalName   = "$($userSamAccountName)@$($domainName)"
+            EmailAddress        = "$($userSamAccountName)@$($domainName)"
             AccountPassword     = $password
             ChangePasswordAtLogon = $false
             Path                = $ouPath
@@ -95,12 +95,12 @@ foreach ($entry in $csvFile) {
             Write-Host "Ajout de l'utilisateur $($userSamAccountName) au groupe $($groupName)" -ForegroundColor Green
         }
 
-        Write-Host "Utilisateur $($userSamAccountName) créé dans $ouPath" -ForegroundColor Green
+        Write-Host "Utilisateur $($userSamAccountName) cree dans $ouPath" -ForegroundColor Green
     } catch {
-        Write-Host "Erreur lors de la création de l'utilisateur $($userSamAccountName): $_" -ForegroundColor Red
+        Write-Host "Erreur lors de la creation de l'utilisateur $($userSamAccountName): $_" -ForegroundColor Red
     }
 }
 
 # Demande à l'utilisateur s'il souhaite revenir au menu principal
-Read-Host "Appuyez sur une touche pour revenir au menu principal ? (O/N)"
+Read-Host "Appuyez sur une touche pour revenir au menu principal."
 exit
